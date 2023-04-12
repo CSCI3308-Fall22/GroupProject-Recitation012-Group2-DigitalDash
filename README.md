@@ -22,84 +22,105 @@ Our application is focused for gamers or people who are looking to get into gami
 
 - To open the website locally, you will need to open a browser, and type in "localhost:3000". From there you will be brought to the home page.
 
-# Steps to deploy Gameroll on your CU private server
-<ol>
-<li>Change the docker-compose.yaml file web port from ‘3000:3000’ to ‘:3000’ and push your change to the repo.</li>
-</ol>
+## Steps to deploy Gameroll on your CU private server
 
-Change the docker-compose.yaml file web port from ‘3000:3000’ to ‘:3000’ and push your change to the repo.
-While connected to the campus internet, use ssh through your terminal of choice to connect to your private server. The command is:
+1. Change the docker-compose.yaml file web port from ‘3000:3000’ to ‘:3000’ and push your change to the repo.
+2. While connected to the campus internet, use ssh through your terminal of choice to connect to your private server. The command is:
+```
 ssh <YOUR_IDENTIKEY>@csci3308.int.colorado.edu
+```
 Once the connection is established navigate to the directory you would like to have the deployment in.
-Install rootless-docker with the command:
+3. Install rootless-docker with the command:
+```
 dockerd-rootless-setuptool.sh install
-Now clone the DigitalDash repo with the command:
+```
+4. Now clone the DigitalDash repo with the command:
+```
 git clone git@github.com:dnerever/DigitalDash.git
-Change the permissions for your repo with two commands:
+```
+5. Change the permissions for your repo with two commands:
+```
 chmod 777 .
 chmod 766 package-lock.json
-Now you will need to add a .env within the gameroll/ directory
-You will now need to create a Twitch API key which can be done by following IGDB’s guide (They explain it better than I could :))
-Also here is IGDB’s guide that you must follow to get your bearer access token GUIDE
-Navigate to gameroll/ with command:
+```
+6. Now you will need to add a .env within the gameroll/ directory.
+7. You will now need to create a Twitch API key which can be done by following [IGDB’s guide](https://igdb.github.io/api/references/authentication/) (They explain it better than I could :)). Also here is IGDB’s guide that you must follow to get your bearer access token.
+8. Navigate to the gameroll/ directory:
+```
 cd gameroll/
-Now create a .env file:
+```
+9. Now create a .env file:
+```
 touch .env
-Now that we have both our Client ID and Bearer Token we can enter those in our .env file using vim with the command:
-vim .env
-Vim file example:
-# database credentials
-POSTGRES_USER="postgres"
-POSTGRES_PASSWORD="pwd"
-POSTGRES_DB="gameroll_db"
+```
+10. Now that we have both our Client ID and Bearer Token we can enter those in our .env file using vim with the command:
+ ```
+ vim .env
+ ```
+ Vim file example:
+ ```
+ # database credentials
+ POSTGRES_USER="postgres"
+ POSTGRES_PASSWORD="pwd"
+ POSTGRES_DB="gameroll_db"
 
-SESSION_SECRET="super duper secret! Gameroll"
-client_id="<YOUR_CLIENT_ID>"
-authorization="Bearer <ACCESS_TOKEN>"
-Now save your .env and close the vim editor
-Ensure you’re in gameroll/ and run:
+ SESSION_SECRET="super duper secret! Gameroll"
+ client_id="<YOUR_CLIENT_ID>"
+ authorization="Bearer <ACCESS_TOKEN>"
+ ```
+ Now save your .env and close the vim editor.
+11. Ensure you’re in gameroll/ and run:
+ ```
+ docker-compose up -d
+ ```
+12. Find the exposed ports with:
+ ```
+ docker-compose ps
+ ```
+13. Access the web server through a browser at the url (Example: http://csci3308.int.colorado.edu:3000 ):
+ ```
+ http://csci3308.int.colorado.edu:<YOUR_EXPOSED_DOCKER_WEB_PORT>
+ ```
+14. That’s all! Enjoy all of your new games (We do have a hosted version of our application).
+
+## Steps to deploy locally:
+1. Make sure you have docker compose installed.
+2. In a terminal of your choice navigate to your desired location for the repo.
+3. Once there clone the repo:
+```git clone git@github.com:dnerever/DigitalDash.git```
+4. Navigate to the gameroll/ directory:
+```cd gameroll/```
+5. Now you will need to add a .env within the gameroll/ directory.
+    1. You will now need to create a Twitch API key which can be done by following [IGDB’s guide](https://igdb.github.io/api/references/authentication/) (They explain it better than I could :)).
+    2. Also here is IGDB’s guide that you must follow to get your bearer access token.
+    3. In the gameroll/ directory create a .env file:
+    ```touch .env```
+    4. Enter both the Client ID and Bearer Token in our .env file using vim:
+    ```vim .env```
+        a.Example .env:
+        ```
+        Vim file example:
+        # database credentials
+        POSTGRES_USER="postgres"
+        POSTGRES_PASSWORD="pwd"
+        POSTGRES_DB="gameroll_db"
+
+        SESSION_SECRET="super duper secret! Gameroll"
+        client_id="<YOUR_CLIENT_ID>"
+        authorization="Bearer <ACCESS_TOKEN>"
+        ```
+    5. Save the file and exit vim
+6. From the gameroll/ shutdown all other docker-compose containers:
+```
+docker-compose down -volumes
+```
+7. Start docker-compose:
+```
 docker-compose up -d
-Then to find the exposed ports run:
-docker-compose ps
-Now the website can be accessed through a browser at the url:
-http://csci3308.int.colorado.edu:<YOUR_EXPOSED_DOCKER_WEB_PORT>
-(In our case it will be accessible through: http://csci3308.int.colorado.edu:3000 )
-That’s all! Enjoy all of your new games (We do have a hosted version of our application)
-Steps to deploy locally
-Make sure you have docker compose installed
-In a terminal of your choice navigate to your desired location for the repo
-Once there clone the repo:
-git clone git@github.com:dnerever/DigitalDash.git
-Next navigate to the gameroll/ folder:
-cd gameroll/
-Now you will need to add a .env within the gameroll/ directory
-You will now need to create a Twitch API key which can be done by following IGDB’s guide (They explain it better than I could :))
-Also here is IGDB’s guide that you must follow to get your bearer access token GUIDE
-Navigate to gameroll/ with command:
-cd gameroll/
-Now create a .env file:
-touch .env
-Now that we have both our Client ID and Bearer Token we can enter those in our .env file using vim with the command:
-vim .env
-Vim file example:
-# database credentials
-POSTGRES_USER="postgres"
-POSTGRES_PASSWORD="pwd"
-POSTGRES_DB="gameroll_db"
-
-SESSION_SECRET="super duper secret! Gameroll"
-client_id="<YOUR_CLIENT_ID>"
-authorization="Bearer <ACCESS_TOKEN>"
-Now save your .env and close the vim editor
-Ensure you’re in gameroll/ and close all other docker containers with:
-docker-compose down –volumes
-Next run:
-docker-compose up -d
-Wait about 5 seconds until the API connection is made
-Now you can open a browser and go to the url:
-localhost:3000
-All Done!
-
+```
+8. Wait until the API connection is secured (~5 seconds)
+9. Access the web app from a browser of your choice:
+[localhost:3000](localhost:3000)
 
 **How to run tests**
 
