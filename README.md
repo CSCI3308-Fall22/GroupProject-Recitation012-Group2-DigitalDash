@@ -10,15 +10,11 @@ This gaming application aims to simplify the process of finding a new game for g
 
 ## Technology Stack
 
-- For this website we will be using HTML, CSS, JavaScript, SQL, nodeJS and EJS in terms of programming langauges. Additonally we will use a Postgres database and then Docker to be the serves for the website.
+- This website uses HTML, CSS, JavaScript, SQL, nodeJS and EJS in terms of programming langauges. Additonally a PostgreSQL database and Docker Compose are used for the website's backend.
 
 ## Prerequisites to run the application
 
-- In order to run the application, you must have Docker installed.
-
-## How to run the application locally
-
-- To open the website locally, you will need to open a browser, and type in "localhost:3000". From there you will be brought to the home page.
+- In order to run the application, you must have Docker Compose installed.
 
 ## Steps to deploy Gameroll on your CU private server
 
@@ -27,7 +23,7 @@ This gaming application aims to simplify the process of finding a new game for g
 ```
 ssh <YOUR_IDENTIKEY>@csci3308.int.colorado.edu
 ```
-Once the connection is established navigate to the directory you would like to have the deployment in.
+3. Once the connection is established navigate to the directory you would like to have the deployment in.
 3. Install rootless-docker with the command:
 ```
 dockerd-rootless-setuptool.sh install
@@ -41,8 +37,8 @@ git clone git@github.com:dnerever/DigitalDash.git
 chmod 777 .
 chmod 766 package-lock.json
 ```
-6. Now you will need to add a .env within the gameroll/ directory.
-7. You will now need to create a Twitch API key which can be done by following [IGDB’s guide](https://igdb.github.io/api/references/authentication/) (They explain it better than I could :)). Also here is IGDB’s guide that you must follow to get your bearer access token.
+6. Add a .env within the gameroll/ directory.
+7. Create a Twitch API key which can be done by following [IGDB’s guide](https://igdb.github.io/api/references/authentication/) (They explain it better than I could :)). Also here is IGDB’s guide that you must follow to get your bearer access token.
 8. Navigate to the gameroll/ directory:
 ```
 cd gameroll/
@@ -92,8 +88,8 @@ git clone git@github.com:dnerever/DigitalDash.git
 ```
 cd gameroll/
 ```
-5. Now you will need to add a .env within the gameroll/ directory.
-    1. You will now need to create a Twitch API key which can be done by following [IGDB’s guide](https://igdb.github.io/api/references/authentication/) (They explain it better than I could :)).
+5. Add a .env within the gameroll/ directory.
+    1. Create a Twitch API key which can be done by following [IGDB’s guide](https://igdb.github.io/api/references/authentication/) (They explain it better than I could :)).
     2. Also here is IGDB’s guide that you must follow to get your bearer access token.
     3. In the gameroll/ directory create a .env file:
     ```
