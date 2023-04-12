@@ -1,24 +1,22 @@
 # GroupProject-Team2
 
-**Application Description:** 
+## Application Description:
 
-Our application is focused for gamers or people who are looking to get into gaming who need a new game to play. Two of our main focuses for this application to be a simplistic, random game generator, so that users can spend more time gaming and less time deciding what to play. The application will consist of four main pages; a login page, register page, recommendation page and a user page. 
-  For our login and register page, we are hoping to implement something similar to past labs, additionally passwords will be encrypted. Initially, we are planning for the application to open up on just the random list of cards of games that users can click through. Prior to logging in the user will not be able to save or like any of the suggestions. If “like” or “save” is clicked and the user is not logged in then the user will be prompted with the login in page. With-in the recommendation page, a single game, with the title, image and other information about the game will be shown. Our main focus is simplicity, and so we are looking for a modern design with only one game shown at a time. Within the recommendation page, the user will only be able to go to the next game, and not be able to go to a previous game.
-  We are hoping to create a simplistic application that people interested in gaming can hop on quickly, find a fun, random suggestion and then get back to the game. 
+This gaming application aims to simplify the process of finding a new game for gamers or people looking to get into gaming. It features a modern design and a random game generator that allows users to quickly discover new games. The application has four main pages, including a login page, a register page, a recommendation page, and a user page where users can save and like game suggestions. Users log in to save or like recommendations, and passwords are encrypted. The recommendation page displays one game at a time, and users can continuously view new games. This application is designed for ease of use and aims to help users spend more time gaming and less time deciding what to play.
 
-**Contributors**
+## Contributors
 
 - Joseph Pleasant, Keith Bates, Kimberly Marthias, Emma Lowery, Harrison Pena, Kevin McMahon 
 
-**Technology Stack**
+## Technology Stack
 
 - For this website we will be using HTML, CSS, JavaScript, SQL, nodeJS and EJS in terms of programming langauges. Additonally we will use a Postgres database and then Docker to be the serves for the website.
 
-**Prerequisites to run the application**
+## Prerequisites to run the application
 
 - In order to run the application, you must have Docker installed.
 
-**How to run the application locally**
+## How to run the application locally
 
 - To open the website locally, you will need to open a browser, and type in "localhost:3000". From there you will be brought to the home page.
 
@@ -77,26 +75,34 @@ touch .env
  ```
  docker-compose ps
  ```
-13. Access the web server through a browser at the url (Example: http://csci3308.int.colorado.edu:3000 ):
+13. Access the web server through a browser (Example: http://csci3308.int.colorado.edu:3000):
  ```
  http://csci3308.int.colorado.edu:<YOUR_EXPOSED_DOCKER_WEB_PORT>
  ```
-14. That’s all! Enjoy all of your new games (We do have a hosted version of our application).
+<!-- 14. That’s all! Enjoy all of your new games (We do have a hosted version of our application). -->
 
 ## Steps to deploy locally:
 1. Make sure you have docker compose installed.
 2. In a terminal of your choice navigate to your desired location for the repo.
 3. Once there clone the repo:
-```git clone git@github.com:dnerever/DigitalDash.git```
+```
+git clone git@github.com:dnerever/DigitalDash.git
+```
 4. Navigate to the gameroll/ directory:
-```cd gameroll/```
+```
+cd gameroll/
+```
 5. Now you will need to add a .env within the gameroll/ directory.
     1. You will now need to create a Twitch API key which can be done by following [IGDB’s guide](https://igdb.github.io/api/references/authentication/) (They explain it better than I could :)).
     2. Also here is IGDB’s guide that you must follow to get your bearer access token.
     3. In the gameroll/ directory create a .env file:
-    ```touch .env```
+    ```
+    touch .env
+    ```
     4. Enter both the Client ID and Bearer Token in our .env file using vim:
-    ```vim .env```
+    ```
+    vim .env
+    ```
         a.Example .env:
         ```
         Vim file example:
@@ -122,10 +128,10 @@ docker-compose up -d
 9. Access the web app from a browser of your choice:
 [localhost:3000](localhost:3000)
 
-**How to run tests**
+<!-- **How to run tests**
 
 N/A - to be added at a later date
 
 **Link to application**
 
-N/A - to be added at a later date
+N/A - to be added at a later date -->
